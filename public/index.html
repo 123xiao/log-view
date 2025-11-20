@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线日志查看平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="/socket.io/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 登录页面 -->
+        <div id="login-page" class="page">
+            <div class="login-container">
+                <h2>日志查看平台登录</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">用户名:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit">登录</button>
+                    <div id="login-error" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 主页面 -->
+        <div id="main-page" class="page hidden">
+            <header>
+                <h1 style="color: blue;">在线日志查看平台</h1>
+                <div class="user-info">
+                    <span id="current-user"></span>
+                    <button class="theme-toggle" id="theme-toggle" title="切换主题">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button id="logout-btn">退出登录</button>
+                </div>
+            </header>
+
+            <div class="container">
+                <aside class="sidebar">
+                    <div class="panel">
+                        <h3>日志文件</h3>
+                        <ul id="log-files-list"></ul>
+                    </div>
+                    
+                    <div class="panel">
+                        <h3>搜索历史</h3>
+                        <ul id="search-history"></ul>
+                    </div>
+                </aside>
+
+                <main class="content">
+                    <div class="toolbar">
+                        <select id="log-file-selector">
+                            <option value="">选择日志文件</option>
+                        </select>
+                        <button id="refresh-btn">刷新</button>
+                        <button id="start-monitor-btn">开始实时监控</button>
+                        <button id="stop-monitor-btn" disabled>停止监控</button>
+                        <button id="copy-log-btn">复制日志</button>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="输入关键词搜索日志...">
+                        <button id="search-btn">搜索</button>
+                    </div>
+
+                    <div class="log-content">
+                        <pre id="log-content-display"></pre>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- 搜索结果模态框 -->
+        <!-- 已移除模态框，改为在日志区域内显示搜索结果 -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

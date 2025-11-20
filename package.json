@@ -1,0 +1,49 @@
+{
+  "name": "log-view-platform",
+  "version": "1.0.0",
+  "description": "在线日志查看平台",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "prebuild": "node prepare-build.js",
+    "build:win": "npm run prebuild && pkg . --targets=node16-win-x64 --output=dist/log-viewer-win.exe",
+    "build:linux": "npm run prebuild && pkg . --targets=node16-linux-x64 --output=dist/log-viewer-linux",
+    "build:mac": "npm run prebuild && pkg . --targets=node16-macos-x64 --output=dist/log-viewer-mac",
+    "build": "npm run prebuild && node build.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "pkg": "^5.8.1"
+  },
+  "keywords": [
+    "log",
+    "viewer",
+    "realtime"
+  ],
+  "author": "LogViewer",
+  "license": "MIT",
+  "bin": "server.js",
+  "pkg": {
+    "assets": [
+      "public/**/*",
+      "config.js",
+      "logs/**/*",
+      "data/**/*",
+      "node_modules/socket.io/client-dist/**/*"
+    ],
+    "targets": [
+      "node16-win-x64",
+      "node16-linux-x64",
+      "node16-macos-x64"
+    ]
+  }
+}
