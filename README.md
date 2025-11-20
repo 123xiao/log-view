@@ -31,7 +31,7 @@
 
 1. 克隆项目代码：
    ```
-   git clone <repository-url>
+   git clone https://github.com/123xiao/log-view
    cd log-view
    ```
 
