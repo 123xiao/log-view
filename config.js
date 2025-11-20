@@ -1,7 +1,7 @@
 // 日志查看平台配置文件
 module.exports = {
   // 服务器端口
-  port: 21005,
+  port: 3000,
   
   // 认证配置
   auth: {
